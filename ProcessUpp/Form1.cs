@@ -50,6 +50,7 @@ namespace ProcessUpp
                 if(processesByName.Length > 0)
                 {
                   labelid.Text =  processesByName[0].Id.ToString();
+                  label_st.Text = processesByName[0].StartTime.ToString(" H:m:s:ff");
                 }
             }
         }
