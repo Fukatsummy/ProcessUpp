@@ -40,10 +40,13 @@
             this.label_pt = new System.Windows.Forms.Label();
             this.label_tc = new System.Windows.Forms.Label();
             this.label_pc = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.label_time = new System.Windows.Forms.Label();
+            this.label_ptime = new System.Windows.Forms.Label();
+            this.label_count = new System.Windows.Forms.Label();
+            this.label_copy = new System.Windows.Forms.Label();
+            this.btn_close = new System.Windows.Forms.Button();
+            this.tb_np = new System.Windows.Forms.TextBox();
+            this.btn_np = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBox1
@@ -58,7 +61,7 @@
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 5000;
+            this.timer1.Interval = 20000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // textBox1
@@ -67,13 +70,13 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(299, 20);
             this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "5";
+            this.textBox1.Text = "20";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(366, 15);
+            this.button1.Location = new System.Drawing.Point(328, 15);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(113, 23);
             this.button1.TabIndex = 2;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -141,51 +144,79 @@
             this.label_pc.TabIndex = 9;
             this.label_pc.Text = "Process Copy";
             // 
-            // label7
+            // label_time
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(572, 114);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 13);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Processe ID";
+            this.label_time.AutoSize = true;
+            this.label_time.Location = new System.Drawing.Point(572, 114);
+            this.label_time.Name = "label_time";
+            this.label_time.Size = new System.Drawing.Size(0, 13);
+            this.label_time.TabIndex = 10;
             // 
-            // label8
+            // label_ptime
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(572, 144);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 13);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Processe ID";
+            this.label_ptime.AutoSize = true;
+            this.label_ptime.Location = new System.Drawing.Point(572, 144);
+            this.label_ptime.Name = "label_ptime";
+            this.label_ptime.Size = new System.Drawing.Size(0, 13);
+            this.label_ptime.TabIndex = 11;
             // 
-            // label9
+            // label_count
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(572, 176);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 13);
-            this.label9.TabIndex = 12;
-            this.label9.Text = "Processe ID";
+            this.label_count.AutoSize = true;
+            this.label_count.Location = new System.Drawing.Point(572, 176);
+            this.label_count.Name = "label_count";
+            this.label_count.Size = new System.Drawing.Size(0, 13);
+            this.label_count.TabIndex = 12;
             // 
-            // label10
+            // label_copy
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(572, 208);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(65, 13);
-            this.label10.TabIndex = 13;
-            this.label10.Text = "Processe ID";
+            this.label_copy.AutoSize = true;
+            this.label_copy.Location = new System.Drawing.Point(572, 208);
+            this.label_copy.Name = "label_copy";
+            this.label_copy.Size = new System.Drawing.Size(0, 13);
+            this.label_copy.TabIndex = 13;
+            // 
+            // btn_close
+            // 
+            this.btn_close.Location = new System.Drawing.Point(477, 238);
+            this.btn_close.Name = "btn_close";
+            this.btn_close.Size = new System.Drawing.Size(95, 23);
+            this.btn_close.TabIndex = 14;
+            this.btn_close.Text = "Close";
+            this.btn_close.UseVisualStyleBackColor = true;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
+            // 
+            // tb_np
+            // 
+            this.tb_np.Location = new System.Drawing.Point(466, 307);
+            this.tb_np.Name = "tb_np";
+            this.tb_np.Size = new System.Drawing.Size(238, 20);
+            this.tb_np.TabIndex = 15;
+            this.tb_np.TextChanged += new System.EventHandler(this.tb_np_TextChanged);
+            // 
+            // btn_np
+            // 
+            this.btn_np.Enabled = false;
+            this.btn_np.Location = new System.Drawing.Point(465, 347);
+            this.btn_np.Name = "btn_np";
+            this.btn_np.Size = new System.Drawing.Size(238, 23);
+            this.btn_np.TabIndex = 16;
+            this.btn_np.Text = "New Process";
+            this.btn_np.UseVisualStyleBackColor = true;
+            this.btn_np.Click += new System.EventHandler(this.btn_np_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(801, 533);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
+            this.ClientSize = new System.Drawing.Size(716, 509);
+            this.Controls.Add(this.btn_np);
+            this.Controls.Add(this.tb_np);
+            this.Controls.Add(this.btn_close);
+            this.Controls.Add(this.label_copy);
+            this.Controls.Add(this.label_count);
+            this.Controls.Add(this.label_ptime);
+            this.Controls.Add(this.label_time);
             this.Controls.Add(this.label_pc);
             this.Controls.Add(this.label_tc);
             this.Controls.Add(this.label_pt);
@@ -217,10 +248,13 @@
         private System.Windows.Forms.Label label_pt;
         private System.Windows.Forms.Label label_tc;
         private System.Windows.Forms.Label label_pc;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label_time;
+        private System.Windows.Forms.Label label_ptime;
+        private System.Windows.Forms.Label label_count;
+        private System.Windows.Forms.Label label_copy;
+        private System.Windows.Forms.Button btn_close;
+        private System.Windows.Forms.TextBox tb_np;
+        private System.Windows.Forms.Button btn_np;
     }
 }
 

@@ -18,6 +18,8 @@ namespace ProcessUpp
             InitializeComponent();
         }
 
+        Process killProcess = new Process();
+
         private void Form1_Load(object sender, EventArgs e)
         {
             UpdateProcessList();
@@ -44,15 +46,60 @@ namespace ProcessUpp
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(listBox1.SelectedIndex != -1)
+            if (listBox1.SelectedIndex != -1)
             {
-                Process [] processesByName = Process.GetProcessesByName(listBox1.Items[listBox1.SelectedIndex].ToString());
-                if(processesByName.Length > 0)
+                int orderNumber = 0;
+                int counter = 0;
+                foreach (object obj in listBox1.Items)
                 {
-                  labelid.Text =  processesByName[0].Id.ToString();
-                  label_st.Text = processesByName[0].StartTime.ToString(" H:m:s:ff");
+
+                    if ((string)obj == listBox1.Items[listBox1.SelectedIndex].ToString())
+                    {
+                        if (counter == listBox1.SelectedIndex)
+                        {
+                            break;
+                        }
+                        orderNumber++;
+                    }
+                    counter++;
+                }
+                Process[] processesByName = Process.GetProcessesByName(listBox1.Items[listBox1.SelectedIndex].ToString());
+                if (processesByName.Length > 0)
+                {
+                    killProcess = processesByName[orderNumber];
+                    labelid.Text = processesByName[orderNumber].Id.ToString();
+                    label_time.Text = processesByName[orderNumber].StartTime.ToString(" H:m:s:ff");
+                    label_ptime.Text = processesByName[orderNumber].TotalProcessorTime.ToString();
+                    label_count.Text = processesByName[orderNumber].Threads.Count.ToString();
+                    label_copy.Text = processesByName.Count().ToString();
+                }
+                foreach (Process process in processesByName)
+                {
+                    MessageBox.Show(process.GetHashCode().ToString());
                 }
             }
+        }
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            killProcess.Kill();
+        }
+
+        private void tb_np_TextChanged(object sender, EventArgs e)
+        {
+            if(tb_np.Text.Length > 0)
+            {
+                btn_np.Enabled = true;
+            }
+            else
+            {
+                btn_np.Enabled = false;
+            }
+        }
+        private void btn_np_Click(object sender, EventArgs e)
+        {
+            Process process = new Process();
+            process.StartInfo = new ProcessStartInfo(tb_np.Text);
+            process.Start();
         }
     }
 }
